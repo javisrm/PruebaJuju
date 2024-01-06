@@ -1,0 +1,59 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">{{titulo | uppercase}}</span>
+                    <form class="mt-3"[formGroup]="libroForm" (ngSubmit)="agregarLibro()">
+                        <div class="mb-3">                        
+                          <input type="text" formControlName="titulo" class="form-control form-control-lg" placeholder="Titulo">                          
+                          <div class="text-danger"
+                          *ngIf="libroForm.get('titulo')?.hasError('required') && libroForm.get('titulo')?.touched"> 
+                            <span >El nombre del titulo<strong> es obligatorio</strong>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="mb-3">                        
+                            <input type="text" formControlName="autor" class="form-control form-control-lg" placeholder="Autor" >
+                            <div class="text-danger"
+                            *ngIf="libroForm.get('autor')?.hasError('required') && libroForm.get('autor')?.touched">
+                            <span >El nombre del autor<strong> es obligatorio</strong>
+                              </span>
+                                
+                            </div>                            
+                          </div>
+                          <div class="mb-3">                        
+                            <!-- <input type="text" formControlName="estado" class="form-control form-control-lg" placeholder="Estado" > -->
+                            <select id="estado" formControlName="estado" class="form-select"  aria-label="Default select example">
+                              <option selected>selecccione el estado del libro</option>
+                              <option value="diponible">diponible</option>
+                              <option value="reservado">reservado</option>
+                              
+                            </select>
+                            <div class="text-danger"
+                            *ngIf="libroForm.get('estado')?.hasError('required') && libroForm.get('estado')?.touched">  
+                            <span >El nombre de la estado<strong> es obligatorio</strong>
+                            </span>                              
+                            </div>
+                          </div>
+                          <div class="mb-3">                        
+                            <input type="date" formControlName="anioPublicacion" class="form-control form-control-lg" placeholder="AnioPublicacion" >
+                            <div class="text-danger"
+                            *ngIf="libroForm.get('anioPublicacion')?.hasError('required') && libroForm.get('anioPublicacion')?.touched"
+                            >
+                            <span >El anioPublicacion<strong> es obligatorio</strong>
+                            </span>
+                                
+                            </div>
+                          </div>
+                        <div class="mb-3">
+                            <button routerLink="/" type="submit" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                            <button type="submit" [disabled]="libroForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        </div>
+                        
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
